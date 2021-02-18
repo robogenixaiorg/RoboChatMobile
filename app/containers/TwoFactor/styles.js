@@ -20,7 +20,7 @@ export default StyleSheet.create({
 		...sharedStyles.textAlignCenter
 	},
 	subtitle: {
-		fontSize: 14,
+		fontSize: 24,
 		paddingBottom: 8,
 		...sharedStyles.textRegular,
 		...sharedStyles.textAlignCenter

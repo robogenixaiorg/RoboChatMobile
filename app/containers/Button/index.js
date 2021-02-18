@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 48,
     borderRadius: 2,
-    width: "90%",
+    width: "100%",
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
     ...sharedStyles.textMedium,
-    ...sharedStyles.textAlignCenter,
+    textAlign: "center",
   },
   disabled: {
     opacity: 0.3,

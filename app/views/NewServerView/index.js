@@ -35,9 +35,9 @@ import LinearGradient from "react-native-linear-gradient";
 const pagestyles = StyleSheet.create({
   title: {
     ...sharedStyles.textBold,
-    fontSize: 22,
+    fontSize: 30,
     marginTop: 20,
-    textAlign: "center",
+    marginLeft: 20,
   },
   certificatePicker: {
     marginBottom: 32,

@@ -14,10 +14,7 @@ const Item = React.memo(
       testID={testID}
       onPress={onPress}
       theme={theme}
-      style={[
-        styles.item,
-        current && { backgroundColor: themes[theme].borderColor },
-      ]}
+      style={[styles.item, current && { backgroundColor: "#707070" }]}
     >
       <View style={styles.itemHorizontal}>{left}</View>
       <View style={styles.itemCenter}>

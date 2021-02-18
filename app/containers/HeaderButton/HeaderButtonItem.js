@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 	title: {
 		...Platform.select({
 			android: {
-				fontSize: 14
+				fontSize: 24
 			},
 			default: {
 				fontSize: 17

@@ -47,12 +47,12 @@ export default StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	serverHeaderText: {
-		fontSize: 16,
+		fontSize: 24,
 		marginLeft: 12,
 		...sharedStyles.textRegular
 	},
 	serverHeaderAdd: {
-		fontSize: 16,
+		fontSize: 24,
 		marginRight: 12,
 		paddingVertical: 10,
 		...sharedStyles.textRegular

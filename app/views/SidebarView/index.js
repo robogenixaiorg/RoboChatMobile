@@ -22,7 +22,7 @@ import Navigation from "../../lib/Navigation";
 
 const Separator = React.memo(({ theme }) => (
   <View
-    style={[styles.separator, { borderColor: themes[theme].separatorColor }]}
+    style={[styles.separator, { borderColor: "themes[theme].separatorColor" }]}
   />
 ));
 Separator.propTypes = {
@@ -199,7 +199,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="message"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -212,7 +212,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="user"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -225,7 +225,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="administration"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -246,12 +246,12 @@ class Sidebar extends Component {
         left={
           <Status
             style={styles.status}
-            size={12}
+            size={20}
             status={user && user.status}
           />
         }
         right={
-          <CustomIcon name="edit" size={20} color={themes[theme].sidebarText} />
+          <CustomIcon name="edit" size={30} color={themes[theme].sidebarText} />
         }
         onPress={() => this.sidebarNavigate("StatusView")}
         testID="sidebar-custom-status"
@@ -276,7 +276,7 @@ class Sidebar extends Component {
     return (
       <SafeAreaView
         testID="sidebar-view"
-        style={{ backgroundColor: themes[theme].focusedBackground }}
+        style={{ backgroundColor: themes[theme].sidebarColor }}
         vertical={isMasterDetail}
       >
         <ScrollView
@@ -295,7 +295,7 @@ class Sidebar extends Component {
             testID="sidebar-close-drawer"
           >
             <View style={styles.header} theme={theme}>
-              <Avatar text={user.username} style={styles.avatar} size={30} />
+              <Avatar text={user.username} style={styles.avatar} size={50} />
               <View style={styles.headerTextContainer}>
                 <View style={styles.headerUsername}>
                   <Text

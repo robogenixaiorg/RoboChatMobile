@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 	},
 	label: {
 		marginBottom: 10,
-		fontSize: 14,
+		fontSize: 20,
 		...sharedStyles.textSemibold
 	},
 	input: {

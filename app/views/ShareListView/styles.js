@@ -51,7 +51,7 @@ export default StyleSheet.create({
 		marginBottom: 20
 	},
 	title: {
-		fontSize: 14,
+		fontSize: 24,
 		...sharedStyles.textBold
 	},
 	permissionTitle: {

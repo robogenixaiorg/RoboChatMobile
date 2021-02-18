@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     width: "90%",
+    fontSize: 24,
   },
 });
 
@@ -204,9 +205,14 @@ class LoginView extends React.Component {
             type="secondary"
             onPress={this.forgotPassword}
             testID="login-view-forgot-password"
-            style={styles.loginButton}
+            style={{
+              justifyContent: "center",
+              alignSelf: "center",
+              width: "90%",
+              fontSize: 24,
+            }}
             color={"white"}
-            fontSize={14}
+            fontSize={20}
           />
         )}
         {this.showRegistrationButton ? (

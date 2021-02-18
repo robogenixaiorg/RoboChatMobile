@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     marginTop: 24,
     marginBottom: 32,
+    fontSize: 39,
   },
   inputContainer: {
     marginTop: 0,
