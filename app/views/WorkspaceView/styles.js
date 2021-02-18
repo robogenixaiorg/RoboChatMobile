@@ -5,20 +5,20 @@ import sharedStyles from '../Styles';
 export default StyleSheet.create({
 	serverName: {
 		...sharedStyles.textSemibold,
-		fontSize: 16,
-		marginBottom: 4
-	},
-	serverUrl: {
+		fontSize: 30,
+		marginBottom: 4,
+	  },
+	  serverUrl: {
 		...sharedStyles.textRegular,
-		fontSize: 14,
+		fontSize: 24,
 		marginBottom: 24
-	},
-	registrationText: {
-		fontSize: 14,
+	  },
+	  registrationText: {
+		fontSize: 24,
 		...sharedStyles.textRegular,
 		...sharedStyles.textAlignCenter
-	},
-	alignItemsCenter: {
+	  },
+	  alignItemsCenter: {
 		alignItems: 'center'
-	}
+	  }
 });

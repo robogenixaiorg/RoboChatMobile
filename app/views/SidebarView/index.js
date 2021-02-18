@@ -178,7 +178,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="settings"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -199,7 +199,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="message"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -212,7 +212,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="user"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -225,7 +225,7 @@ class Sidebar extends Component {
           left={
             <CustomIcon
               name="administration"
-              size={20}
+              size={30}
               color={themes[theme].sidebarText}
             />
           }
@@ -246,7 +246,7 @@ class Sidebar extends Component {
         left={
           <Status
             style={styles.status}
-            size={12}
+            size={15}
             status={user && user.status}
           />
         }

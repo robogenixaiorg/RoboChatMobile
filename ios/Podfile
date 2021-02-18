@@ -16,11 +16,11 @@ abstract_target 'defaults' do
 
   all_pods
 
-  target 'RocketChatRN' # Experimental app
-  target 'Rocket.Chat' # Official app
+  
+  target 'RoboChat' # Official app
 end
 
-target 'ShareRocketChatRN' do
+target 'ShareRoboChat' do
   all_pods
 end
 
