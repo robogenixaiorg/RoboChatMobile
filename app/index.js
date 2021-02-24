@@ -1,17 +1,18 @@
 import React from 'react';
-import { Linking, Dimensions } from 'react-native';
+import { Linking, Dimensions, Text, View, Button } from 'react-native';
 import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
 import { KeyCommandsEmitter } from 'react-native-keycommands';
 import RNScreens from 'react-native-screens';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
-
+import crashlytics from "@react-native-firebase/crashlytics";
 import {
 	defaultTheme,
 	newThemeState,
 	subscribeTheme,
 	unsubscribeTheme
 } from './utils/theme';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 import UserPreferences from './lib/userPreferences';
 import EventEmitter from './utils/events';
 import { appInit, appInitLocalSettings, setMasterDetail as setMasterDetailAction } from './actions/app';
@@ -38,11 +39,13 @@ import { ActionSheetProvider } from './containers/ActionSheet';
 import debounce from './utils/debounce';
 import { isFDroidBuild } from './constants/environment';
 
+
+
 RNScreens.enableScreens();
 
 const parseDeepLinking = (url) => {
 	if (url) {
-		url = url.replace(/rocketchat:\/\/|https:\/\/go.rocket.chat\//, '');
+		url = url.replace(/robochat:\/\/|https:\/\/robochat.page.link\/|https:\/\/robochat.robogenix.ai\//,'');
 		const regex = /^(room|auth|invite)\?/;
 		if (url.match(regex)) {
 			url = url.replace(regex, '').trim();
@@ -61,6 +64,12 @@ const parseDeepLinking = (url) => {
 	return null;
 };
 
+
+
+// let deepLinkUnsubscribe = ()=>{
+
+// };
+
 export default class Root extends React.Component {
 	constructor(props) {
 		super(props);
@@ -72,6 +81,7 @@ export default class Root extends React.Component {
 			width, height, scale, fontScale
 		} = Dimensions.get('window');
 		this.state = {
+			isSubscribed :false,
 			theme: defaultTheme(),
 			themePreferences: {
 				currentTheme: supportSystemTheme() ? 'automatic' : 'light',
@@ -87,28 +97,81 @@ export default class Root extends React.Component {
 		}
 	}
 
-	componentDidMount() {
-		this.listenerTimeout = setTimeout(() => {
-			Linking.addEventListener('url', ({ url }) => {
-				const parsedDeepLinkingURL = parseDeepLinking(url);
-				if (parsedDeepLinkingURL) {
-					store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
-				}
-			});
-		}, 5000);
-		Dimensions.addEventListener('change', this.onDimensionsChange);
+	handleDynamicLink = (link) => {
+		const parsedDeepLinkingURL = parseDeepLinking(link.url);
+		if (parsedDeepLinkingURL) {
+			store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
+		}
+
 	}
+	onReceived(notification) {
+		console.log("Received Notification: ", notification);
+		}
+		onOpened(openResult) {
+		//perform logging
+		console.log("Opened Notification");
+		console.log('Message: ', openResult.notification.payload.body);
+		console.log('Data: ', openResult.notification.payload.additionalData);
+		console.log('isActive: ', openResult.notification.isAppInFocus);
+		console.log('openResult: ', openResult);
+		}
+		onRegistered(notifData) {
+		// triggered when device is registered for using push notification
+		console.log("Device had been registered for push notifications!", notifData);
+		}
+		onIds(device) {
+		console.log('Device info: ', device);
+		}
+
+	async componentDidMount() {	
+		// throw new Error('This is a test javascript crash!');
+			
+		this.listenerTimeout = setTimeout(() => {
+			// deepLinkUnsubscribe = dynamicLinks().onLink(this.handleDynamicLink);
+				dynamicLinks()
+				.getInitialLink()
+				.then((link) => {	
+					const parsedDeepLinkingURL = parseDeepLinking(link.url);
+						if (parsedDeepLinkingURL) {
+							store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
+						}
+				});
+				
+				dynamicLinks().onLink(async (link) => {
+					const parsedDeepLinkingURL = parseDeepLinking(link.url);
+						if (parsedDeepLinkingURL) {
+							store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
+						}
+				   
+				  });
+			// Linking.addEventListener('url', ({ url }) => {
+							
+			// });
+		}, 1500);
+		Dimensions.addEventListener('change', this.onDimensionsChange);
+		
+    }
+		
+	
 
 	componentWillUnmount() {
+		// deepLinkUnsubscribe();
 		clearTimeout(this.listenerTimeout);
 		Dimensions.removeEventListener('change', this.onDimensionsChange);
-
 		unsubscribeTheme();
-
 		if (this.onKeyCommands && this.onKeyCommands.remove) {
 			this.onKeyCommands.remove();
 		}
+		
 	}
+
+	CustomFallback = (props) => (
+		<View>
+		  <Text>Something happened!</Text>
+		  <Text>{props.error.toString()}</Text>
+		  <Button onPress={props.resetError} title={'Try again'} />
+		</View>
+	  )
 
 	init = async() => {
 		UserPreferences.getMapAsync(THEME_PREFERENCES_KEY).then(this.setTheme);
@@ -191,9 +254,13 @@ export default class Root extends React.Component {
 		const {
 			themePreferences, theme, width, height, scale, fontScale
 		} = this.state;
+		
 		return (
+			
 			<SafeAreaProvider initialMetrics={initialWindowMetrics}>
+				
 				<AppearanceProvider>
+				
 					<Provider store={store}>
 						<ThemeContext.Provider
 							value={{
@@ -224,6 +291,7 @@ export default class Root extends React.Component {
 					</Provider>
 				</AppearanceProvider>
 			</SafeAreaProvider>
+			
 		);
 	}
 }

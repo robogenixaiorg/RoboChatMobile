@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>812672250903-3pcnsugr41mhagvs1pgkls7dq1aq1ve9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.812672250903-3pcnsugr41mhagvs1pgkls7dq1aq1ve9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGZRuAqjs7GAEjD1SAcbEN-qZknzgkMHY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>812672250903</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.spicyfy.robochat</string>
+	<key>PROJECT_ID</key>
+	<string>robochat-19d69</string>
+	<key>STORAGE_BUCKET</key>
+	<string>robochat-19d69.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:812672250903:ios:9f6218f909f41f94bc9852</string>
+</dict>
+</plist>
