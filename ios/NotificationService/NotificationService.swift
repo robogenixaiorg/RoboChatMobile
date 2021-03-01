@@ -1,55 +1,31 @@
 import UserNotifications
 
+import OneSignal
+
 class NotificationService: UNNotificationServiceExtension {
-  
-  var contentHandler: ((UNNotificationContent) -> Void)?
-  var bestAttemptContent: UNMutableNotificationContent?
-  var rocketchat: RocketChat?
-  
-  override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-    self.contentHandler = contentHandler
-    bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
     
-    if let bestAttemptContent = bestAttemptContent {
-      let ejson = (bestAttemptContent.userInfo["ejson"] as? String ?? "").data(using: .utf8)!
-      guard let data = try? (JSONDecoder().decode(Payload.self, from: ejson)) else {
-        return
-      }
-      
-      rocketchat = RocketChat.instanceForServer(server: data.host.removeTrailingSlash())
-      
-      // If the notification has the content on the payload, show it
-      if data.notificationType != .messageIdOnly {
-        self.processPayload(payload: data)
-        return
-      }
-      
-      // Request the content from server
-      rocketchat?.getPushWithId(data.messageId) { notification in
-        if let notification = notification {
-          self.bestAttemptContent?.title = notification.title
-          self.bestAttemptContent?.body = notification.text
-          self.processPayload(payload: notification.payload)
+    var contentHandler: ((UNNotificationContent) -> Void)?
+    var receivedRequest: UNNotificationRequest!
+    var bestAttemptContent: UNMutableNotificationContent?
+    
+    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+        self.receivedRequest = request;
+        self.contentHandler = contentHandler
+        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        
+        if let bestAttemptContent = bestAttemptContent {
+            OneSignal.didReceiveNotificationExtensionRequest(self.receivedRequest, with: self.bestAttemptContent)
+            contentHandler(bestAttemptContent)
         }
-      }
-    }
-  }
-  
-  func processPayload(payload: Payload) {
-    // If is a encrypted message
-    if payload.messageType == .e2e {
-      if let message = payload.msg, let rid = payload.rid {
-        if let decryptedMessage = rocketchat?.decryptMessage(rid: rid, message: message) {
-          bestAttemptContent?.body = decryptedMessage
-          if let roomType = payload.type, roomType == .group, let sender = payload.senderName {
-            bestAttemptContent?.body = "\(sender): \(decryptedMessage)"
-          }
-        }
-      }
     }
     
-    if let bestAttemptContent = bestAttemptContent {
-      contentHandler?(bestAttemptContent)
+    override func serviceExtensionTimeWillExpire() {
+        // Called just before the extension will be terminated by the system.
+        // Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used.
+        if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
+            OneSignal.serviceExtensionTimeWillExpireRequest(self.receivedRequest, with: self.bestAttemptContent)
+            contentHandler(bestAttemptContent)
+        }
     }
-  }
+    
 }

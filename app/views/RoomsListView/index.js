@@ -22,6 +22,7 @@ import log, { logEvent, events } from '../../utils/log';
 import I18n from '../../i18n';
 import SortDropdown from './SortDropdown';
 import ServerDropdown from './ServerDropdown';
+import OneSignal from 'react-native-onesignal';
 import {
 	toggleSortDropdown as toggleSortDropdownAction,
 	openSearchHeader as openSearchHeaderAction,
@@ -166,10 +167,30 @@ class RoomsListView extends React.Component {
 	}
 
 	componentDidMount() {
+		
 		const {
-			navigation, closeServerDropdown
+			navigation, closeServerDropdown,
+			user
 		} = this.props;
 		this.mounted = true;
+		
+		console.log('user',user.username)
+		OneSignal.setAppId('dd6ff881-6b6e-4f88-a357-983d70b05824'); // Start OneSignal
+		
+			
+			OneSignal.setLogLevel(6, 0);
+        OneSignal.setRequiresUserPrivacyConsent(false);
+        OneSignal.promptForPushNotificationsWithUserResponse(response => {
+            this.OSLog("Prompt response:", response);
+        });
+
+		
+		OneSignal.sendTag('username', user.username);
+		OneSignal.setNotificationWillShowInForegroundHandler(notifReceivedEvent => {
+            this.OSLog("OneSignal: notification will show in foreground:", notifReceivedEvent);
+            let notif = notifReceivedEvent.getNotification();
+        });
+		
 
 		if (isTablet) {
 			EventEmitter.addEventListener(KEY_COMMAND, this.handleCommands);

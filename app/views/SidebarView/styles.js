@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
   itemText: {
     marginVertical: 16,
-    fontSize: 14,
+    fontSize: 18,
     ...sharedStyles.textSemibold,
   },
   separator: {

@@ -51,6 +51,7 @@ async function logout() {
     await element(by.text('Logout')).tap();
     await waitFor(element(by.id('onboarding-view'))).toBeVisible().withTimeout(10000);
     await expect(element(by.id('onboarding-view'))).toBeVisible();
+    
 }
 
 async function mockMessage(message) {

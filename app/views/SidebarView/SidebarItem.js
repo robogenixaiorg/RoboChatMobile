@@ -16,7 +16,7 @@ const Item = React.memo(
       theme={theme}
       style={[
         styles.item,
-        current && { backgroundColor: themes[theme].borderColor },
+        current && { backgroundColor: "#707070" },
       ]}
     >
       <View style={styles.itemHorizontal}>{left}</View>

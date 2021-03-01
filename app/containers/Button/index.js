@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 48,
     borderRadius: 2,
-    width: "90%",
+    width: "100%",
   },
   text: {
     fontSize: 16,

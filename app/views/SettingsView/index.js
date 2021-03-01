@@ -70,13 +70,16 @@ class SettingsView extends React.Component {
   };
 
   checkCookiesAndLogout = async () => {
+    console.log('logout',logout)
+    debugger;
     const { logout, user } = this.props;
     const db = database.servers;
     const usersCollection = db.collections.get("users");
     try {
       const userRecord = await usersCollection.find(user.id);
-
+      debugger;
       logout();
+      
     } catch {
       // Do nothing: user not found
     }
@@ -202,12 +205,12 @@ class SettingsView extends React.Component {
 
           <List.Section>
             <List.Separator />
-            <List.Item
+            {/* <List.Item
               title="Contact_us"
               onPress={this.sendEmail}
               showActionIndicator
               testID="settings-view-contact"
-            />
+            /> */}
             <List.Separator />
             <List.Item
               title="Language"
@@ -218,21 +221,21 @@ class SettingsView extends React.Component {
             <List.Separator />
             {!isFDroidBuild ? (
               <>
-                <List.Item
+                {/* <List.Item
                   title="Review_this_app"
                   showActionIndicator
                   onPress={onReviewPress}
                   testID="settings-view-review-app"
-                />
+                /> */}
               </>
             ) : null}
             <List.Separator />
-            <List.Item
+            {/* <List.Item
               title="Share_this_app"
               showActionIndicator
               onPress={this.shareApp}
               testID="settings-view-share-app"
-            />
+            /> */}
             <List.Separator />
             <List.Item
               title="Default_browser"
@@ -259,12 +262,12 @@ class SettingsView extends React.Component {
 
           <List.Section>
             <List.Separator />
-            <List.Item
+            {/* <List.Item
               title="License"
               onPress={this.onPressLicense}
               showActionIndicator
               testID="settings-view-license"
-            />
+            /> */}
             <List.Separator />
             <List.Item
               title={I18n.t("Version_no", { version: getReadableVersion })}

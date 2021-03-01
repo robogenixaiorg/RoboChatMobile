@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppGroup</key>
-	<string>group.ios.chat.rocket</string>
+	<string>group.io.spicyfy.robochat.onesignal</string>
 	<key>BugsnagAPIKey</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -101,6 +101,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>remote-notification</string>
 		<string>voip</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

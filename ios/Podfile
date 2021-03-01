@@ -27,6 +27,7 @@ end
 # used to get user credentials
 target 'NotificationService' do
   all_pods
+  pod 'OneSignal', '>= 3.0', '< 4.0'
 end
 
 post_install do |installer|

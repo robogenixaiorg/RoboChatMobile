@@ -38,7 +38,7 @@ import InAppNotification from './containers/InAppNotification';
 import { ActionSheetProvider } from './containers/ActionSheet';
 import debounce from './utils/debounce';
 import { isFDroidBuild } from './constants/environment';
-
+import OneSignal from 'react-native-onesignal';
 
 
 RNScreens.enableScreens();
@@ -149,7 +149,39 @@ export default class Root extends React.Component {
 			// });
 		}, 1500);
 		Dimensions.addEventListener('change', this.onDimensionsChange);
+		// OneSignal.setAppId('dd6ff881-6b6e-4f88-a357-983d70b05824'); // Start OneSignal
 		
+			
+		// 	OneSignal.setLogLevel(6, 0);
+        // OneSignal.setRequiresUserPrivacyConsent(false);
+        // OneSignal.promptForPushNotificationsWithUserResponse(response => {
+        //     this.OSLog("Prompt response:", response);
+        // });
+
+		
+		// OneSignal.sendTag('User', 'android testing 1');
+		// OneSignal.setNotificationWillShowInForegroundHandler(notifReceivedEvent => {
+        //     this.OSLog("OneSignal: notification will show in foreground:", notifReceivedEvent);
+        //     let notif = notifReceivedEvent.getNotification();
+        // });
+        // OneSignal.setNotificationOpenedHandler(notification => {
+        //     this.OSLog("OneSignal: notification opened:", notification);
+        // });
+        // OneSignal.setInAppMessageClickHandler(event => {
+        //     this.OSLog("OneSignal IAM clicked:", event);
+        // });
+        // OneSignal.addEmailSubscriptionObserver((event) => {
+        //     this.OSLog("OneSignal: email subscription changed: ", event);
+        // });
+        // OneSignal.addSubscriptionObserver(event => {
+        //     this.OSLog("OneSignal: subscription changed:", event);
+        //     this.setState({ isSubscribed: event.to.isSubscribed})
+        // });
+        // OneSignal.addPermissionObserver(event => {
+        //     this.OSLog("OneSignal: permission changed:", event);
+        // });
+		
+       
     }
 		
 	

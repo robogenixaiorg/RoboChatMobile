@@ -12,6 +12,8 @@
 	<array>
 		<string>applinks:go.rocket.chat</string>
 		<string>applinks:jitsi.rocket.chat</string>
+		<string>applinks:robochat.robogenix.ai</string>
+		<string>applinks:robochat.page.link</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>

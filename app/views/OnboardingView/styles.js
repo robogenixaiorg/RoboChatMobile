@@ -7,12 +7,12 @@ import sharedStyles from "../Styles";
 export default StyleSheet.create({
   onboarding: {
     alignSelf: "center",
-    marginTop: isTablet ? 0 : verticalScale(116),
+    marginTop: isTablet ? 0 : verticalScale(50),
     marginBottom: verticalScale(50),
     maxHeight: verticalScale(150),
     resizeMode: "contain",
-    width: 100,
-    height: 100,
+    width: 300,
+    height: 300,
   },
   title: {
     ...sharedStyles.textBold,

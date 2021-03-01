@@ -2139,30 +2139,29 @@
   integrity sha512-CKVhIZdX/Cmb80muog8sKpi5vM8npwFp4tx4Dj1IvTBidZweuO22+VH2rDOj7E0LzdV9IYRJ4FGBwcPBD2qUrQ==
 
 "@react-native-firebase/analytics@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.3.1.tgz#f24509c1f996217e89829147d28d319ed5fbbd0b"
-  integrity sha512-8U70bVSnsH5xlbNDL+LkF0VjgZ3nejSCsrIrxI29aulMPAdAD6ZndH9gVegFK75vLILy3giWRlGR89o08fnpxA==
-
-"@react-native-firebase/app-types@6.7.2":
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-6.7.2.tgz#d2e1530af5702e00578914b41468898c10d3289c"
-  integrity sha512-pIwc6e0ZINw6PJqNVsAxzOVJUDg6au2TdulY+ZOYQ11SPDs5I2n9likoGrElPmJjajT4s9h87uz/6PWP2k9PxQ==
+  version "7.6.10"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.10.tgz#1c8cd7b31cebed53aeacd177bb01fead5f733738"
+  integrity sha512-Qok1s8oY1Gy3VHcCUSKK2oFc8ExghyKhf/KIjI/3gDVW6WDCB9eTGw/QmI5+br6nhZTKhWAgGfnToEQweJ24ig==
 
 "@react-native-firebase/app@^8.2.0":
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.2.0.tgz#28db1958c8bd8028503b4d0a68a31a7c4caf61cc"
-  integrity sha512-V3s87BlDIyuhtK/1w+vwKdY5AlOCCBXovlorZU1wiyDH8Q942Cjxcx9tBc59+TLWqMYrYyFGAnAJxnIw3QzmmQ==
+  version "8.4.7"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.7.tgz#7393ba7af36bd815bd5af7c64a20b0dd8a7e3341"
+  integrity sha512-jN788Q17aMOHc49wKc74RC3iZNhFoS+yTZhMBHFVyytf64uK3ofYAk3hjvukkylUTKF0Ni/L+04M0IDv8kStKg==
   dependencies:
-    "@react-native-firebase/app-types" "6.7.2"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
 "@react-native-firebase/crashlytics@^8.1.2":
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-8.1.2.tgz#2a9c0ec8809457ba1f48acffc8d86f043aac0ff6"
-  integrity sha512-xRGMeuNmJcaPmgr3PqIXS1r5Wx2x21S9ES007BTBpyCzd92vmlKVawpx5vYjFoVQeKRjEPT37MJ7QTU4x81JoA==
+  version "8.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-8.5.2.tgz#6d49a24f0a4f1b3e26d589ed525cde2ffb53932b"
+  integrity sha512-7wZiaHapsXEhTljGE86/lGVWbDUsZrI4PPNLiTx4+ovt8aKSwPrb9h35VGo0dEtlpU0x/ahB1IJ+TxFLqFDeXw==
   dependencies:
     stacktrace-js "^2.0.0"
+
+"@react-native-firebase/dynamic-links@^10.8.1":
+  version "10.8.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-10.8.1.tgz#cee7142f59da314c69787e751d70ab724acba6a5"
+  integrity sha512-9kIXYqJeVYKaquTeOiqw6OzKs630KBWUAtw1LC27XDYAuwQdVD/+92x9Ka0qV3vvIEH4YdXb2B2TC4yUb1wBVQ==
 
 "@react-navigation/core@^5.12.0":
   version "5.12.0"
@@ -12944,6 +12943,11 @@ react-native-keycommands@2.0.3:
   resolved "https://registry.yarnpkg.com/react-native-keycommands/-/react-native-keycommands-2.0.3.tgz#09b799c1f70832e5cd9fbdb712ddaa3ee683f70e"
   integrity sha512-s03K8JvCnfLhBg10Y2aRH3Bp9Uw9QOEr0uzuIj9OkgjjTB8/b+T4K5LSCxGuIAD30IxsEZvGZKjP1DzEMxaRhQ==
 
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
+
 react-native-localize@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-1.4.0.tgz#4653596d066d0941c48f5404dc1c0d08b6950443"
@@ -12986,6 +12990,13 @@ react-native-notifier@1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-notifier/-/react-native-notifier-1.3.1.tgz#a878c82c8ee99b04d57818401b1f084232729afd"
   integrity sha512-w7KOTF5WOYzbhCXQHz6p9tbosOVxhOW+Sh7VAdIuW6r7PSoryRNkF4P6Bzq1+2NPtMK7L6xnojCdKJ+nVnwh+A==
+
+react-native-onesignal@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-4.0.4.tgz#72d81ee48963431ccde0344a0812be63ad8363d1"
+  integrity sha512-bDHuuvz8DIvzyu7N0tWOiRrCh0Lwv08FyHHN1d34vCKnInjwI7DWaYWRBN7VROw7yZoukMMOZ3jOdmVZUL1p2w==
+  dependencies:
+    invariant "^2.2.2"
 
 react-native-orientation-locker@1.1.8:
   version "1.1.8"

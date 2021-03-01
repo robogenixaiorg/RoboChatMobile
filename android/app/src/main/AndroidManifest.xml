@@ -28,8 +28,8 @@
             android:name="chat.rocket.reactnative.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
+            android:label="OneSignal Example"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
@@ -56,6 +56,15 @@
                     android:host="jitsi.rocket.chat"
                     android:scheme="rocketchat" />
             </intent-filter>
+            <intent-filter>
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <data android:host="robochat.page.link" android:scheme="http"/>
+    <data android:host="robochat.page.link" android:scheme="https"/>
+    <data android:host="robochat.robogenix.ai" android:scheme="http"/>
+    <data android:host="robochat.robogenix.ai" android:scheme="https"/>
+</intent-filter>
         </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <activity
