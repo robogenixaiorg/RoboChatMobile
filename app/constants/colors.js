@@ -42,7 +42,7 @@ export const themes = {
     actionTintColor: "#1d74f5",
     separatorColor: "#cbcbcc",
     navbarBackground: "#ffffff",
-    headerBorder: "#B2B2B2",
+    headerBorder: "#ff6666",
     headerBackground: "#ff6666",
     headerSecondaryBackground: "#ffffff",
     headerTintColor: "black",

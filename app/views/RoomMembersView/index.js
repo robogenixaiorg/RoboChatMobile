@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FlatList, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Q } from '@nozbe/watermelondb';
-
+import OneSignal from 'react-native-onesignal';
 import styles from './styles';
 import UserItem from '../../presentation/UserItem';
 import scrollPersistTaps from '../../utils/scrollPersistTaps';
@@ -139,6 +139,7 @@ class RoomMembersView extends React.Component {
 	}
 
 	onPressUser = (selectedUser) => {
+		
 		const { room } = this.state;
 		const { showActionSheet, user } = this.props;
 
@@ -378,14 +379,22 @@ class RoomMembersView extends React.Component {
 	handleRemoveUserFromRoom = async(selectedUser) => {
 		try {
 			const { room, members, membersFiltered } = this.state;
+		
+			const {user}=this.props
 			const userId = selectedUser._id;
+			
 			await RocketChat.removeUserFromRoom({ roomId: room.rid, t: room.t, userId });
+			
 			const message = I18n.t('User_has_been_removed_from_s', { s: RocketChat.getRoomTitle(room) });
 			EventEmitter.emit(LISTENER, { message });
 			this.setState({
 				members: members.filter(member => member._id !== userId),
 				membersFiltered: membersFiltered.filter(member => member._id !== userId)
 			});
+			if(user.username===selectedUser.username){
+				OneSignal.deleteTag(room.rid)
+			}
+			
 		} catch (e) {
 			log(e);
 		}

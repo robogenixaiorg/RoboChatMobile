@@ -71,13 +71,13 @@ class SettingsView extends React.Component {
 
   checkCookiesAndLogout = async () => {
     console.log('logout',logout)
-    debugger;
+    
     const { logout, user } = this.props;
     const db = database.servers;
     const usersCollection = db.collections.get("users");
     try {
       const userRecord = await usersCollection.find(user.id);
-      debugger;
+     
       logout();
       
     } catch {

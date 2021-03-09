@@ -22,6 +22,8 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>GcgkL2ciUFwNn5tzO0gWQiji7qRljy75UvPC7</string>
 	<key>KeychainGroup</key>
 	<string>$(AppIdentifierPrefix)chat.rocket.reactnative</string>
 	<key>NSAppTransportSecurity</key>

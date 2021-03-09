@@ -30,15 +30,17 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>rocketchat</string>
+			<string>robochat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>rocketchat</string>
+				<string>robochat</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>GcgkL2ciUFwNn5tzO0gWQiji7qRljy75UvPC7</string>
 	<key>IS_OFFICIAL</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>

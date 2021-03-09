@@ -39,14 +39,16 @@ import { ActionSheetProvider } from './containers/ActionSheet';
 import debounce from './utils/debounce';
 import { isFDroidBuild } from './constants/environment';
 import OneSignal from 'react-native-onesignal';
-
+import codePush from 'react-native-code-push';
 
 RNScreens.enableScreens();
 
 const parseDeepLinking = (url) => {
 	if (url) {
+		
 		url = url.replace(/robochat:\/\/|https:\/\/robochat.page.link\/|https:\/\/robochat.robogenix.ai\//,'');
 		const regex = /^(room|auth|invite)\?/;
+		
 		if (url.match(regex)) {
 			url = url.replace(regex, '').trim();
 			if (url) {
@@ -70,7 +72,7 @@ const parseDeepLinking = (url) => {
 
 // };
 
-export default class Root extends React.Component {
+class Root extends React.Component {
 	constructor(props) {
 		super(props);
 		this.init();
@@ -98,6 +100,7 @@ export default class Root extends React.Component {
 	}
 
 	handleDynamicLink = (link) => {
+		
 		const parsedDeepLinkingURL = parseDeepLinking(link.url);
 		if (parsedDeepLinkingURL) {
 			store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
@@ -127,10 +130,17 @@ export default class Root extends React.Component {
 		// throw new Error('This is a test javascript crash!');
 			
 		this.listenerTimeout = setTimeout(() => {
+
+			Linking.addEventListener('url',({ url }) => {
+				
+				const parsedDeepLinkingURL = parseDeepLinking(url);
+				if (parsedDeepLinkingURL){
+					store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));}});
 			// deepLinkUnsubscribe = dynamicLinks().onLink(this.handleDynamicLink);
 				dynamicLinks()
 				.getInitialLink()
-				.then((link) => {	
+				.then((link) => {
+						
 					const parsedDeepLinkingURL = parseDeepLinking(link.url);
 						if (parsedDeepLinkingURL) {
 							store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
@@ -138,6 +148,7 @@ export default class Root extends React.Component {
 				});
 				
 				dynamicLinks().onLink(async (link) => {
+					
 					const parsedDeepLinkingURL = parseDeepLinking(link.url);
 						if (parsedDeepLinkingURL) {
 							store.dispatch(deepLinkingOpen(parsedDeepLinkingURL));
@@ -208,6 +219,7 @@ export default class Root extends React.Component {
 	init = async() => {
 		UserPreferences.getMapAsync(THEME_PREFERENCES_KEY).then(this.setTheme);
 		const [notification, deepLinking] = await Promise.all([initializePushNotifications(), Linking.getInitialURL()]);
+		
 		const parsedDeepLinkingURL = parseDeepLinking(deepLinking);
 		store.dispatch(appInitLocalSettings());
 		if (notification) {
@@ -327,3 +339,8 @@ export default class Root extends React.Component {
 		);
 	}
 }
+export default codePush({
+  updateDialog: false,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+})(Root);

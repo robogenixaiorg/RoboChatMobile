@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
-    fontSize: 16,
+    fontSize: 19,
     ...sharedStyles.textMedium,
     ...sharedStyles.textAlignCenter,
   },

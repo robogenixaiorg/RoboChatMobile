@@ -276,7 +276,7 @@ class Sidebar extends Component {
     return (
       <SafeAreaView
         testID="sidebar-view"
-        style={{ backgroundColor: themes[theme].focusedBackground }}
+        style={{ backgroundColor: 'black'}}
         vertical={isMasterDetail}
       >
         <ScrollView

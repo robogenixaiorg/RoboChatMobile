@@ -40,14 +40,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     marginBottom: 32,
+    marginTop:20
   },
   bottomContainerText: {
     ...sharedStyles.textRegular,
-    fontSize: 13,
+    fontSize: 15,
   },
   bottomContainerTextBold: {
     ...sharedStyles.textSemibold,
-    fontSize: 13,
+    fontSize: 15,
+    marginTop:5
   },
   loginButton: {
     justifyContent: "center",
@@ -206,7 +208,7 @@ class LoginView extends React.Component {
             testID="login-view-forgot-password"
             style={styles.loginButton}
             color={"white"}
-            fontSize={14}
+            fontSize={18}
           />
         )}
         {this.showRegistrationButton ? (

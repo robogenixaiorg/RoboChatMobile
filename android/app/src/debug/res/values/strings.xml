@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RoboChat</string>
     <string name="share_extension_name">RoboChat</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">JVDwVJyI77xENNdUUUz6-Tj1YU_qUtdD1LoLv</string>
 </resources>

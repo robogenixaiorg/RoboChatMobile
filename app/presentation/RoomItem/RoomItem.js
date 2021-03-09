@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-
+import OneSignal from 'react-native-onesignal';
 import styles from './styles';
 import Wrapper from './Wrapper';
 import UnreadBadge from '../UnreadBadge';
@@ -46,8 +46,22 @@ const RoomItem = ({
 	toggleRead,
 	hideChannel
 }) => (
+	
 	<Touchable
-		onPress={onPress}
+		onPress={()=> {
+		onPress();
+		OneSignal.setAppId('dd6ff881-6b6e-4f88-a357-983d70b05824'); // Start OneSignal
+		
+			
+			OneSignal.setLogLevel(6, 0);
+        OneSignal.setRequiresUserPrivacyConsent(false);
+        OneSignal.promptForPushNotificationsWithUserResponse(response => {
+            this.OSLog("Prompt response:", response);
+        });
+
+		
+		OneSignal.sendTag(rid,'true');
+		}}
 		width={width}
 		favorite={favorite}
 		toggleFav={toggleFav}

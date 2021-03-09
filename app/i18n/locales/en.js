@@ -82,7 +82,7 @@ export default {
 	activity: 'activity',
 	Activity: 'Activity',
 	Add_Reaction: 'Add Reaction',
-	Add_Server: 'Add Server',
+	Add_Server: 'Join Chat Group',
 	Add_users: 'Add users',
 	Admin_Panel: 'Admin Panel',
 	Agent: 'Agent',
@@ -366,7 +366,7 @@ export default {
 	Onboarding_subtitle: 'Beyond Team Collaboration',
 	Onboarding_title: 'Welcome to Robochat',
 	Onboarding_join_open_description: 'Join our open workspace to chat with the Rocket.Chat team and community.',
-	Onboarding_agree_terms: 'By continuing, you agree to Rocket.Chat',
+	Onboarding_agree_terms: 'By continuing, you agree to RoboChat',
 	Onboarding_less_options: 'Less options',
 	Onboarding_more_options: 'More options',
 	Online: 'Online',
@@ -623,7 +623,7 @@ export default {
 	Reply_in_Thread: 'Reply in Thread',
 	Server_selection: 'Server selection',
 	Server_selection_numbers: 'Server selection 1...9',
-	Add_server: 'Add server',
+	Add_server: 'Join Chat Group',
 	New_line: 'New line',
 	You_will_be_logged_out_of_this_application: 'You will be logged out of this application.',
 	Clear: 'Clear',
@@ -704,5 +704,5 @@ export default {
 	Direct_message: 'Direct message',
 	Message_Ignored: 'Message ignored. Tap to display it.',
 	Enter_workspace_URL: 'Enter workspace URL',
-	Workspace_URL_Example: 'Ex. your-company.rocket.chat'
+	Workspace_URL_Example: 'Ex. your-company.robogenix.chat'
 };

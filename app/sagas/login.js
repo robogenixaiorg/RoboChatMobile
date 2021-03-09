@@ -220,7 +220,7 @@ const handleLogout = function* handleLogout({ forcedByServer }) {
 				yield delay(300);
 				EventEmitter.emit('NewServer', { server });
 			} else {
-				debugger;
+				
 				const serversDB = database.servers;
 				// all servers
 				const serversCollection = serversDB.collections.get('servers');
@@ -237,7 +237,7 @@ const handleLogout = function* handleLogout({ forcedByServer }) {
 						}
 					}
 				}
-				debugger;
+				
 				// if there's no servers, go outside
 				yield put(appStart({ root: ROOT_OUTSIDE }));
 				yield delay(300);

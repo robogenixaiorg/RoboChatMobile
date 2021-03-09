@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import semver from 'semver';
-
+import OneSignal from 'react-native-onesignal';
 import Touch from '../../utils/touch';
 import { setLoading as setLoadingAction } from '../../actions/selectedUsers';
 import { leaveRoom as leaveRoomAction, closeRoom as closeRoomAction } from '../../actions/room';
@@ -399,7 +399,10 @@ class RoomActionsView extends React.Component {
 				{
 					text: I18n.t('Yes_action_it', { action: I18n.t('leave') }),
 					style: 'destructive',
-					onPress: () => leaveRoom(room.rid, room.t)
+					onPress: () => {leaveRoom(room.rid, room.t)
+					
+							OneSignal.deleteTag(room.rid)
+						}
 				}
 			]
 		);
