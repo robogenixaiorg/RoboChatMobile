@@ -1,4 +1,4 @@
-package chat.rocket.reactnative;
+package io.spicyfy.robochat;
 
 import android.content.Context;
 

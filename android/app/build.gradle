@@ -1,3 +1,7 @@
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services' // apply after this line
+apply plugin: 'com.google.firebase.crashlytics'
 buildscript {
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
@@ -105,6 +109,7 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -151,11 +156,11 @@ android {
     }
 
     defaultConfig {
-        applicationId APPLICATION_ID
+        applicationId "io.spicyfy.robochat"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode VERSIONCODE as Integer
-        versionName "4.14.0"
+        versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         if (!isFoss) {
             manifestPlaceholders = [BugsnagAPIKey: BugsnagAPIKey as String]
@@ -183,17 +188,22 @@ android {
         }
     }
     buildTypes {
+        debug {
+            resValue "string", "rn_config_reader_custom_package", "io.spicyfy.robochat"
+        }
         release {
+             
             minifyEnabled enableProguardInReleaseBuilds
             setProguardFiles([getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'])
             signingConfig signingConfigs.release
-            if (!isFoss) {
+            resValue "string", "rn_config_reader_custom_package", "io.spicyfy.robochat"
+            
                 firebaseCrashlytics {
                     nativeSymbolUploadEnabled true
                 }
-            }
-        }
-    }
+           
+        }}
+   
 
     // packagingOptions {
     //     pickFirst '**/armeabi-v7a/libc++_shared.so'

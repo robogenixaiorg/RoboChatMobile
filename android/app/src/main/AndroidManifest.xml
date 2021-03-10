@@ -1,13 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="chat.rocket.reactnative">
+    package="io.spicyfy.robochat">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="chat.rocket.reactnative.MainApplication"
+        android:name="io.spicyfy.robochat.MainApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="chat.rocket.reactnative.MainActivity"
+            android:name="io.spicyfy.robochat.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:label="OneSignal Example"
@@ -34,13 +34,22 @@
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
-            <intent-filter android:label="@string/app_name">
+            <!-- <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
+                            </intent-filter> -->
+            <intent-filter android:label="@string/app_name">
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+    <data android:host="robochat.page.link" android:scheme="http"/>
+    <data android:host="robochat.page.link" android:scheme="https"/>
+    <data android:host="robochat.robogenix.ai" android:scheme="http"/>
+    <data android:host="robochat.robogenix.ai" android:scheme="https"/>
+    <data
                     android:host="go.rocket.chat"
                     android:scheme="https" />
                 <data
@@ -52,23 +61,20 @@
                 <data
                     android:host="auth"
                     android:scheme="rocketchat" />
+               
                 <data
                     android:host="jitsi.rocket.chat"
                     android:scheme="rocketchat" />
-            </intent-filter>
-            <intent-filter>
-    <action android:name="android.intent.action.VIEW"/>
-    <category android:name="android.intent.category.DEFAULT"/>
-    <category android:name="android.intent.category.BROWSABLE"/>
-    <data android:host="robochat.page.link" android:scheme="http"/>
-    <data android:host="robochat.page.link" android:scheme="https"/>
-    <data android:host="robochat.robogenix.ai" android:scheme="http"/>
-    <data android:host="robochat.robogenix.ai" android:scheme="https"/>
+                    <data
+                    
+                    android:scheme="robochat" />
+
+    
 </intent-filter>
         </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <activity
-            android:name="chat.rocket.reactnative.share.ShareActivity"
+            android:name="io.spicyfy.robochat.share.ShareActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/share_extension_name"
             android:noHistory="true"
